@@ -140,8 +140,12 @@
    * @param speed The speed at which the car should turn, between +-200. Defaults to 200.
    */
   void Car::turnLeft(float angle, int speed){
-    float time = (angle/90.0)*(1050);
-    rightForward(speed);
+    float time = (abs(angle)/90.0)*(1100);
+    if(angle >=0){
+      rightForward(speed);
+    } else {
+      rightForward(-speed);
+    }
     delay(time);
     carStop();
   }
@@ -153,8 +157,12 @@
    * @param speed The speed at which the car should turn, between +-200. Defaults to 200
    */
   void Car::turnRight(float angle, int speed){
-    float time = (angle/90.0)*(1150);
-    leftForward(speed);
+    float time = (abs(angle)/90.0)*(1150);
+    if(angle >= 0){
+      leftForward(speed);
+    } else {
+      leftForward(-speed);
+    }
     delay(time);
     carStop();
   }
